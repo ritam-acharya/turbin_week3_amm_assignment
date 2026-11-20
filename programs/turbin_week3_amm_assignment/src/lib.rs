@@ -16,18 +16,18 @@ pub mod turbin_week3_assignment {
     use super::*;
 
     pub fn initialize(ctx: Context<Initialize>,  fee: u64, seed: u64, authority: Option<Pubkey>) -> Result<()> {
-        initialize::initialize(ctx,  fee, seed, authority)
+        ctx.accounts.initialize(fee, seed, authority, ctx.bumps)
     }
 
     pub fn deposit(ctx: Context<Deposit>, amount: u64, max_x: u64, max_y: u64) -> Result<()> {
-        deposit::deposit(ctx, amount, max_x, max_y)
+        ctx.accounts.deposit(amount, max_x, max_y)
     }
 
     pub fn withdraw(ctx: Context<Withdraw>, amount: u64, min_x: u64, min_y: u64) -> Result<()> {
-        withdraw::withdraw(ctx, amount, min_x, min_y)
+        ctx.accounts.withdraw(amount, min_x, min_y)
     }
 
     pub fn swap(ctx: Context<Swap>, is_x: bool, amount: u64, min: u64) -> Result<()> {
-        swap::swap(ctx, is_x, amount, min)
+        ctx.accounts.swap(is_x, amount, min)
     }
 }
